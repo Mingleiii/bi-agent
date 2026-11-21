@@ -1,0 +1,24 @@
+[project]
+name = "bi-agent"
+version = "0.1.0"
+description = "生产级大屏 BI 智能解读 Agent（FastAPI + 可插拔 LLM 后端）"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "httpx>=0.27",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+# 说明：DeepAgent 框架通过 app/llm/client.py 的 LLMBackend 防腐层接入，
+# 接入方式见该文件顶部注释，不与核心链路强耦合。

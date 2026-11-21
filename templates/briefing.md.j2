@@ -1,0 +1,10 @@
+# {{ report_title }}
+
+{% for s in sections %}
+## {{ s.title }}
+
+| 指标 | 数值 | 同比 |
+| --- | --- | --- |
+{% for r in s.rows %}| {{ r.name }} | {{ r.value }} | {{ r.yoy }} |
+{% endfor %}
+{% endfor %}
